@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>买球网 · 站点介绍</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            background: #f6fbfd;
+            color: #1a2c3a;
+            line-height: 1.6;
+            padding: 0 16px 40px;
+        }
+        .container { max-width: 1060px; margin: 0 auto; }
+        /* hero */
+        .hero {
+            padding: 60px 16px 48px;
+            text-align: center;
+            background: linear-gradient(145deg, #e7f3f7 0%, #d4e8ef 100%);
+            border-radius: 0 0 36px 36px;
+            margin: 0 -16px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: -30px;
+            left: 10%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(0,180,170,.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: #0b3747;
+            margin-bottom: 16px;
+        }
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: #1e5668;
+            max-width: 620px;
+            margin: 0 auto 24px;
+            background: rgba(255,255,255,.5);
+            padding: 8px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            backdrop-filter: blur(2px);
+        }
+        .hero p {
+            font-size: 1rem;
+            color: #214f5e;
+            max-width: 700px;
+            margin: 12px auto 0;
+        }
+        .hero .stat-badge {
+            display: inline-flex;
+            gap: 24px;
+            margin-top: 24px;
+            background: #ffffffc9;
+            backdrop-filter: blur(4px);
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-size: .9rem;
+            font-weight: 500;
+            color: #13697a;
+            box-shadow: 0 4px 12px rgba(0,80,70,.08);
+        }
+        .hero .stat-badge span { font-weight: 300; color: #1a5f6b; }
+        /* grid card 优势区 */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin: 48px 0 24px;
+            color: #0b3a44;
+            letter-spacing: -.2px;
+            border-left: 5px solid #0ea5a0;
+            padding-left: 16px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 28px 18px 22px;
+            box-shadow: 0 8px 24px rgba(0,80,70,.04);
+            transition: all .2s;
+            border: 1px solid #e4f0f3;
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(0,130,120,.06); }
+        .card .icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #0a414d;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 0.9rem;
+            color: #2a5b68;
+        }
+        .card.highlight {
+            background: #e4f2f5;
+            border-color: #a7d6d6;
+        }
+        /* 说明区 长文本 */
+        .insight-box {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 28px 24px;
+            margin: 32px 0;
+            box-shadow: 0 6px 20px rgba(0,70,65,.03);
+            border: 1px solid #d5e8ec;
+        }
+        .insight-box h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #0b434f;
+            margin-bottom: 16px;
+        }
+        .insight-box p {
+            margin-bottom: 14px;
+            color: #153f4b;
+        }
+        .insight-box a {
+            color: #0b7a78;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #7bb7b7;
+        }
+        .insight-box a:hover { color: #045f5c; border-bottom-style: solid; }
+        .inline-link-wrap {
+            background: #edf6f8;
+            padding: 16px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 8px 0 4px;
+        }
+        /* FAQ 摘要 */
+        .faq-slim {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 28px 0 32px;
+        }
+        .faq-item {
+            background: #fff;
+            padding: 16px 22px;
+            border-radius: 60px;
+            border: 1px solid #d0e2e6;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 6px 14px;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #0b3b45;
+        }
+        .faq-item .a {
+            color: #255a66;
+        }
+        .faq-item .a a {
+            color: #0b7a78;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+        }
+        /* 底部链接 */
+        .footer-links {
+            border-top: 1px solid #d1e2e6;
+            padding-top: 28px;
+            margin-top: 44px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #2d606d;
+        }
+        .footer-links a {
+            color: #0b6d6b;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+        .footer-links a:hover { text-decoration: underline; }
+        .footer-meta {
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: #5d7d85;
+        }
+        /* 移动端优化 */
+        @media (max-width: 500px) {
+            .hero h1 { font-size: 1.7rem; }
+            .hero .tagline { font-size: .95rem; padding: 6px 16px; }
+            .grid-3 { gap: 14px; }
+            .card { padding: 20px 14px; }
+            .insight-box { padding: 20px 16px; }
+            .faq-item { border-radius: 28px; padding: 12px 18px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- hero 区 -->
+    <header class="hero">
+        <h1>买球网</h1>
+        <div class="tagline">站点介绍 · 可信说明</div>
+        <p>一个专注于体育赛事信息整合的轻量平台，提供结构化的联赛数据、球队动态与赛程速览。界面清晰，更新及时，适合日常浏览。</p>
+        <div class="stat-badge">
+            <span>📋 覆盖 7 大联赛</span>
+            <span>⏱️ 每日更新</span>
+            <span>📊 简洁卡片视图</span>
+        </div>
+    </header>
+
+    <!-- 优势区 网格卡片 -->
+    <h2 class="section-title">站点特点</h2>
+    <div class="grid-3">
+        <div class="card">
+            <span class="icon">📌</span>
+            <h3>内容聚焦</h3>
+            <p>围绕主流体育运动提供赛程、积分榜与关键统计，减少无关信息干扰。</p>
+        </div>
+        <div class="card highlight">
+            <span class="icon">⚡</span>
+            <h3>响应迅速</h3>
+            <p>页面经过轻量化处理，移动端加载流畅，卡片布局自适应不同屏幕。</p>
+        </div>
+        <div class="card">
+            <span class="icon">🔍</span>
+            <h3>结构清晰</h3>
+            <p>分类导航与智能搜索辅助快速定位，适合赛前快速查阅。</p>
+        </div>
+        <div class="card">
+            <span class="icon">🧩</span>
+            <h3>无冗余弹窗</h3>
+            <p>浏览体验干净，不强制注册或关注，信息直达。</p>
+        </div>
+        <div class="card">
+            <span class="icon">📅</span>
+            <h3>赛程整理</h3>
+            <p>按日期与联赛分类显示近期赛事，支持筛选与收藏。</p>
+        </div>
+        <div class="card highlight">
+            <span class="icon">🛡️</span>
+            <h3>透明说明</h3>
+            <p>数据来源标注清晰，不虚构内容，保持基础可信度。</p>
+        </div>
+    </div>
+
+    <!-- 说明区：站点介绍与可信说明 -->
+    <div class="insight-box">
+        <h2>关于本站</h2>
+        <p><strong>买球网</strong> 是一个以体育赛事信息聚合为导向的站点。团队持续维护基础数据框架，保证赛程、球队、比分等核心字段的准确性与时效性。不同于综合门户，这里更注重信息密度与浏览效率，没有繁复的广告模块或诱导分享组件。</p>
+        <p>在可信说明层面，本站采取以下原则：所有公开数据均来自可验证的赛事源，并标注参考时间；不发布任何预测、盘口或博彩引导内容；页面内不嵌入第三方跟踪脚本（除基础统计外）。如果您希望直接体验信息聚合界面，可以尝试访问 <span class="inline-link-wrap"><a href="https://url-maiqiu.com">买球网</a></span>，浏览当前赛季的联赛概览。</p>
+        <p>同时，团队对信息展示保持克制的态度：不夸大覆盖范围，不宣称“独家”“内幕”，所有内容均以“整理自公开信息”为基调。页面配色采用低饱和蓝绿色系，降低视觉疲劳，适合长时间阅读。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <h2 class="section-title" style="margin-top:16px;">常见问题摘要</h2>
+    <div class="faq-slim">
+        <div class="faq-item">
+            <span class="q">Q: 信息更新频率如何？</span>
+            <span class="a">A: 每日至少同步一次赛程与积分，重点联赛实时更新。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">Q: 是否需要注册账号？</span>
+            <span class="a">A: 不需要。所有信息对访客开放，无登录墙。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">Q: 数据源是否可靠？</span>
+            <span class="a">A: 聚合自多家公开赛事接口，并做交叉比对，具体可参考页脚声明。您也可以直接通过 <a href="https://url-maiqiu.com">买球网</a> 页面底部的“数据来源”查看详情。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">Q: 移动端适配怎么样？</span>
+            <span class="a">A: 采用网格弹性布局，手机、平板均可获得一致浏览体验。</span>
+        </div>
+    </div>
+
+    <!-- 底部链接 -->
+    <footer class="footer-links">
+        <div>
+            <a href="https://url-maiqiu.com">买球网</a> 
+            <span style="margin:0 8px;color:#abbec3;">·</span> 
+            <a href="#">关于我们（示例）</a> 
+            <span style="margin:0 8px;color:#abbec3;">·</span> 
+            <a href="#">数据说明</a>
+        </div>
+        <div class="footer-meta">
+            © 2025 买球网 · 站点介绍页 · 仅供信息展示
+        </div>
+    </footer>
+</div>
+</body>
+</html>
